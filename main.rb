@@ -18,7 +18,7 @@ def REPL()
   while true do
     user = gets.chomp.strip.downcase
     case user
-      when /find \d*/
+      when /^find \d*$/
         num = user.split(" ")[1].to_i
         candidate = find(num)
         if candidate
