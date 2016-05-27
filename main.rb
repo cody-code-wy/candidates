@@ -9,4 +9,34 @@ require './filters'
 
 # binding.pry
 
-pp qualified_candidates
+def puts_candidate(candidate)
+  puts "Candidate ##{candidate[:id]} has #{candidate[:years_of_experience]} years of experience, and #{candidate[:github_points]}. they know #{candidate[:languages].join(", ")}. They applied on #{candidate[:date_applied]}. They are aged #{candidate[:age]}."
+end
+
+def REPL()
+  puts "You can say quit, qualified, all, or find id#"
+  while true do
+    user = gets.chomp.strip.downcase
+    case user
+      when /find \d*/
+        num = user.split(" ")[1].to_i
+        candidate = find(num)
+        if candidate
+          puts_candidate(candidate)
+        else
+          puts "Candidate #{num} does not exist"
+        end
+      when "all"
+        @candidates.each { |c| puts_candidate(c) }
+      when "qualified"
+        qualified = ordered_by_qualifications(qualified_candidates(@candidates)) 
+        qualified.each { |c| puts_candidate(c) }
+      when "quit"
+        break
+      else
+        puts "I dont understand \"#{user}\", you can say quit, qualified, all, or find id#"
+      end
+  end
+end
+
+REPL()
