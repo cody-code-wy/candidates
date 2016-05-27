@@ -13,18 +13,18 @@ def puts_candidate(candidate)
   puts "Candidate ##{candidate[:id]} has #{candidate[:years_of_experience]} years of experience, and #{candidate[:github_points]} github points. they know #{candidate[:languages].join(", ")}. They applied on #{candidate[:date_applied]}. They are aged #{candidate[:age]}."
 end
 
-def REPL()
+def repl()
   puts "You can say quit, qualified, all, or find id#"
   while true do
     user = gets.chomp.strip.downcase
     case user
       when /^find \d*$/
-        num = user.split(" ")[1].to_i
-        candidate = find(num)
+        id = user.split(" ")[1].to_i
+        candidate = find(id)
         if candidate
           puts_candidate(candidate)
         else
-          puts "Candidate #{num} does not exist"
+          puts "Candidate #{id} does not exist"
         end
       when "all"
         @candidates.each { |c| puts_candidate(c) }
@@ -39,4 +39,4 @@ def REPL()
   end
 end
 
-REPL()
+repl()
