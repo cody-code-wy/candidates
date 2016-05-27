@@ -10,7 +10,7 @@ require './filters'
 # binding.pry
 
 def puts_candidate(candidate)
-  puts "Candidate ##{candidate[:id]} has #{candidate[:years_of_experience]} years of experience, and #{candidate[:github_points]}. they know #{candidate[:languages].join(", ")}. They applied on #{candidate[:date_applied]}. They are aged #{candidate[:age]}."
+  puts "Candidate ##{candidate[:id]} has #{candidate[:years_of_experience]} years of experience, and #{candidate[:github_points]} github points. they know #{candidate[:languages].join(", ")}. They applied on #{candidate[:date_applied]}. They are aged #{candidate[:age]}."
 end
 
 def REPL()
